@@ -37,7 +37,7 @@ Comes with **auto-setup**, **one-line commands**, and **super fast performance**
 ---
 Setup  OneLine Command:
 ```
-apt update -y && apt install curl git -y && bash <(curl -s https://raw.githubusercontent.com/hackerzfx/Youtube-Downloader-termux/main/setup.sh)
+apt update -y && apt install curl git -y && bash <(curl -s https://raw.githubusercontent.com/hackerzfx/YT-DL/main/setup.sh)
 
 
 ```
