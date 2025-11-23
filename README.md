@@ -41,7 +41,7 @@ apt update -y && apt install curl git -y && bash <(curl -s https://raw.githubuse
 
 
 ```
-Setup With 1 by 1 Commands
+Setup With 1 by 1 Commands Recommended 👍
 ```
 apt update -y 
 ```
@@ -59,6 +59,8 @@ cd Youtube-Downloader-termux
 ```
 ```
 chmod +x setup.sh
+```
+After All commands type exit and then u can start with dl
 ```
 ```
 bash -x setup.sh
