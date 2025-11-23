@@ -35,7 +35,7 @@ Comes with **auto-setup**, **one-line commands**, and **super fast performance**
 **Ali Hamza** — *HaCKeRZ*
 
 ---
-Setup  OneLine Command:
+Setup  OneLine Command bot Recommended ,takes time :
 ```
 apt update -y && apt install curl git -y && bash <(curl -s https://raw.githubusercontent.com/hackerzfx/YT-DL/main/setup.sh)
 
@@ -60,8 +60,7 @@ cd Youtube-Downloader-termux
 ```
 chmod +x setup.sh
 ```
-After All commands type exit and then u can start with dl
-```
 ```
 bash -x setup.sh
-
+```
+After All commands type exit and then u can start with dl
