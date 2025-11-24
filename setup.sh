@@ -108,15 +108,6 @@ printf "\nDone! Saved to $OUT_DIR\n"
 printf '\a'
 EOF
 
-# add alias to bashrc/profile if missing
-grep -qxF "alias dl='bash ~/yd'" ~/.bashrc 2>/dev/null || echo "alias dl='bash ~/yd'" >> ~/.bashrc
-grep -qxF "alias dl='bash ~/yd'" ~/.profile 2>/dev/null || echo "alias dl='bash ~/yd'" >> ~/.profile
-
-# load aliases now
-source ~/.bashrc 2>/dev/null || source ~/.profile 2>/dev/null
-
-# verify
-alias dl
 
 chmod +x ~/yd
 dos2unix ~/yd >/dev/null 2>&1 || true
@@ -126,11 +117,20 @@ if [ -f "$(dirname "$0")/yd.py" ]; then
     chmod +x "$(dirname "$0")/yd.py" || true
 fi
 
-if ! grep -qxF "alias dl='bash ~/yd'" ~/.bashrc 2>/dev/null; then echo "alias dl='bash ~/yd'" >> ~/.bashrc; fi
-if ! grep -qxF "alias dl='bash ~/yd'" ~/.profile 2>/dev/null; then echo "alias dl='bash ~/yd'" >> ~/.profile; fi
+# Add alias to bashrc/profile if missing
+if ! grep -qxF "alias dl='bash ~/yd'" ~/.bashrc 2>/dev/null; then 
+    echo "alias dl='bash ~/yd'" >> ~/.bashrc
+fi
+if ! grep -qxF "alias dl='bash ~/yd'" ~/.profile 2>/dev/null; then 
+    echo "alias dl='bash ~/yd'" >> ~/.profile
+fi
 
-# load aliases now
-source ~/.bashrc 2>/dev/null || source ~/.profile 2>/dev/null
-# verify
-alias dl
-exit 0
+echo "${GREEN}Setup complete!${RESET}"
+echo ""
+echo "${YELLOW}Termux will now exit automatically.${RESET}"
+echo "${YELLOW}Please restart Termux and use: ${GREEN}dl${RESET}"
+echo ""
+sleep 2
+
+# Exit Termux automatically
+kill -9 $PPID
