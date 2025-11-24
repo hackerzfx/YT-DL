@@ -1,66 +1,106 @@
 
 <p align="center">
-  <b>Fast • Clean • 1080p Support • MP3 Extraction • Auto-Setup</b>
+  <b>⚡ Lightning Fast • Cross-Platform • 1080p • MP3 • Playlists</b>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Developer-Ali%20Hamza%20(HaCKeRZ)-blue?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Language-Bash-green?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Downloads-100%2B-brightgreen?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Version-1.0-lightgrey?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20Termux-orange?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Version-2.0-lightgrey?style=for-the-badge">
 </p>
 
 ---
 
-# 🚀 YT-DL (Termux YouTube Downloader)
+# 🚀 YT-DL - Lightning Fast YouTube Downloader
 
-A complete, automated **YouTube downloader for Termux** with support for MP3 & multiple video qualities.  
-Comes with **auto-setup**, **one-line commands**, and **super fast performance** using `yt-dlp` + `ffmpeg`.
+Download YouTube videos & playlists in **1080p/720p/480p/360p** or extract **MP3 audio**.  
+Works on **Windows**, **Linux**, **macOS**, and **Termux (Android)**.
 
 ---
 
-# ⚡ Features
+# ⚡ Quick Start
 
-- 🎥 **1080p / 720p / 480p / 360p** video download options  
-- 🎵 **MP3 high-quality audio extraction**  
-- 📊 **One-line progress display**  
-- 🗂 **Auto-create storage folders**  
-- ⚡ Commands: `yd` (interactive) or `dl` (direct URL)  
-- ⚙️ **Fully automated setup script** (fresh Termux support)  
-- 🚀 Fast performance using **yt-dlp + ffmpeg**
+## Windows (30 seconds)
+
+```powershell
+git clone https://github.com/hackerzfx/YT-DL && cd YT-DL
+powershell -ExecutionPolicy Bypass -File setup.ps1
+yd.bat
+```
+
+## Termux (One-Line)
+
+```bash
+apt update -y && apt install curl git -y && bash <(curl -s https://raw.githubusercontent.com/hackerzfx/YT-DL/main/setup.sh)
+```
+Then restart Termux and use: `dl`
+
+## Linux / macOS
+
+```bash
+git clone https://github.com/hackerzfx/YT-DL && cd YT-DL
+bash setup.sh
+python3 yd.py
+```
+
+---
+
+# 🎯 Features
+
+✅ **1080p/720p/480p/360p** video quality  
+✅ **MP3** audio extraction  
+✅ **Playlist** auto-detection & download  
+✅ **Cross-platform** (Windows/Linux/macOS/Termux)  
+✅ **Fast** setup & downloads  
+
+---
+
+# 💡 Usage Examples
+
+### Download a video
+```bash
+# Windows
+yd.bat "https://youtube.com/watch?v=xxxxx"
+
+# Linux/macOS/Termux
+python3 yd.py "https://youtube.com/watch?v=xxxxx"
+```
+
+### Download a playlist
+```bash
+# Paste playlist URL when prompted
+# Choose: Download entire playlist or single video
+# Select quality: 1080p/720p/480p/360p/MP3
+```
+
+---
+
+# 📂 Where Files Are Saved
+
+- **Windows**: `C:\Users\YourName\Videos\YTDLP\`
+- **Termux**: `/sdcard/YTDLP/`
+- **Linux/macOS**: `~/Videos/YTDLP/`
+
+---
+
+# 🔧 Requirements
+
+- **Python 3.7+** (auto-installed on Termux)
+- **ffmpeg** (for video merging & MP3)
+  - Windows: `winget install ffmpeg`
+  - Linux: `apt install ffmpeg`
+  - macOS: `brew install ffmpeg`
 
 ---
 
 # 👨‍💻 Developer
+
 **Ali Hamza** — *HaCKeRZ*
 
 ---
-Setup  OneLine Command bot Recommended ,takes time :
-```
-apt update -y && apt install curl git -y && bash <(curl -s https://raw.githubusercontent.com/hackerzfx/YT-DL/main/setup.sh)
 
+# 📚 More Info
 
-```
-Setup With 1 by 1 Commands Recommended 👍
-```
-apt update -y 
-```
-```
-apt upgrade -y 
-```
-```
-apt install git -y
-```
-```
-git clone https://github.com/hackerzfx/YT-DL
-```
-```
-cd Youtube-Downloader-termux
-```
-```
-chmod +x setup.sh
-```
-```
-bash -x setup.sh
-```
-After All commands type exit and then u can start with dl
+- **Windows Guide**: [INSTALL_WINDOWS.md](INSTALL_WINDOWS.md)
+- **Build Executable**: [BUILD_EXE.md](BUILD_EXE.md)
+- **Issues**: [GitHub Issues](https://github.com/hackerzfx/YT-DL/issues)

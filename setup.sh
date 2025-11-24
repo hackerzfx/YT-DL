@@ -49,13 +49,33 @@ OUT_DIR="/sdcard/YTDLP"
 mkdir -p "$OUT_DIR" >/dev/null 2>&1 || true
 
 if [ -z "${1-}" ]; then
-  read -p "Paste Only Youtube video URL: " url
+  read -p "Paste YouTube video/playlist URL: " url
 else
   url="$1"
 fi
 
 [ -n "$url" ] || { echo "No URL provided."; exit 1; }
 
+# Detect if URL is a playlist
+IS_PLAYLIST=false
+if echo "$url" | grep -qE "(list=|playlist\?)" ; then
+  IS_PLAYLIST=true
+  echo ""
+  echo "Playlist detected!"
+  echo "1) Download entire playlist"
+  echo "2) Download single video only"
+  read -p "Option (1-2): " playlist_choice
+  
+  case "$playlist_choice" in
+    1) PLAYLIST_OPTS="--yes-playlist" ;;
+    2) PLAYLIST_OPTS="--no-playlist" ;;
+    *) echo "Invalid option."; exit 1 ;;
+  esac
+else
+  PLAYLIST_OPTS=""
+fi
+
+echo ""
 echo "Select quality:"
 echo "1) 1080p"
 echo "2) 720p"
@@ -74,7 +94,7 @@ case "$choice" in
 esac
 
 OUT_TEMPLATE="$OUT_DIR/%(title)s.%(ext)s"
-CMD="yt-dlp --newline -o \"$OUT_TEMPLATE\" $OPTS \"$url\""
+CMD="yt-dlp --newline $PLAYLIST_OPTS -o \"$OUT_TEMPLATE\" $OPTS \"$url\""
 
 echo "Starting..."
 
@@ -101,16 +121,16 @@ alias dl
 chmod +x ~/yd
 dos2unix ~/yd >/dev/null 2>&1 || true
 
+# Make Python script executable if it exists
+if [ -f "$(dirname "$0")/yd.py" ]; then
+    chmod +x "$(dirname "$0")/yd.py" || true
+fi
+
 if ! grep -qxF "alias dl='bash ~/yd'" ~/.bashrc 2>/dev/null; then echo "alias dl='bash ~/yd'" >> ~/.bashrc; fi
 if ! grep -qxF "alias dl='bash ~/yd'" ~/.profile 2>/dev/null; then echo "alias dl='bash ~/yd'" >> ~/.profile; fi
-
-echo "${GREEN}Setup complete! Use: dl <URL>${RESET}"
-# add alias to bashrc/profile if missing
-grep -qxF "alias dl='bash ~/yd'" ~/.bashrc 2>/dev/null || echo "alias dl='bash ~/yd'" >> ~/.bashrc
-grep -qxF "alias dl='bash ~/yd'" ~/.profile 2>/dev/null || echo "alias dl='bash ~/yd'" >> ~/.profile
 
 # load aliases now
 source ~/.bashrc 2>/dev/null || source ~/.profile 2>/dev/null
 # verify
 alias dl
-exit -y
+exit 0
