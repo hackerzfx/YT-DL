@@ -28,10 +28,23 @@ powershell -ExecutionPolicy Bypass -File setup.ps1
 yd.bat
 ```
 
-## Termux (One-Line)
+## Termux
 
+### Option 1: One-Line Setup (Recommended)
 ```bash
 apt update -y && apt install curl git -y && bash <(curl -s https://raw.githubusercontent.com/hackerzfx/YT-DL/main/setup.sh)
+```
+
+### Option 2: Step-by-Step Setup (Manual)
+Use this if you prefer to run commands manually:
+```bash
+termux-setup-storage
+apt update -y
+apt install git python ffmpeg -y
+git clone https://github.com/hackerzfx/YT-DL
+cd YT-DL
+chmod +x setup.sh
+bash setup.sh
 ```
 Then restart Termux and use: `dl`
 

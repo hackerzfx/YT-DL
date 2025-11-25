@@ -6,11 +6,12 @@ YELLOW=$(printf '\033[1;33m')
 RED=$(printf '\033[1;31m')
 RESET=$(printf '\033[0m')
 
+
 echo "${GREEN}YT-DL Auto-Setup Started...${RESET}"
 
 pkg update -y >/dev/null 2>&1 || true
-pkg upgrade -y >/dev/null 2>&1 || true
 
+# Install dependencies only if missing (pkg install checks automatically)
 pkg install -y python ffmpeg git wget curl dos2unix >/dev/null 2>&1 || true
 
 python -m ensurepip --upgrade >/dev/null 2>&1 || true
