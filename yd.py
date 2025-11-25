@@ -66,17 +66,14 @@ def get_playlist_choice():
     """Ask user if they want to download entire playlist or single video."""
     print()
     print("Playlist detected!")
-    print("1) Download entire playlist")
-    print("2) Download single video only")
-    
     while True:
-        choice = input("Option (1-2): ").strip()
-        if choice == "1":
+        choice = input("Download entire playlist? (y/n): ").strip().lower()
+        if choice in ['y', 'yes']:
             return "--yes-playlist"
-        elif choice == "2":
+        elif choice in ['n', 'no']:
             return "--no-playlist"
         else:
-            print("Invalid option. Please choose 1 or 2.")
+            print("Invalid option. Please enter y or n.")
 
 
 def get_quality_choice():

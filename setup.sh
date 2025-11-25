@@ -63,13 +63,12 @@ if echo "$url" | grep -qE "(list=|playlist\?)" ; then
   IS_PLAYLIST=true
   echo ""
   echo "Playlist detected!"
-  echo "1) Download entire playlist"
-  echo "2) Download single video only"
-  read -p "Option (1-2): " playlist_choice
+
+  read -p "Download entire playlist? (y/n): " playlist_choice
   
   case "$playlist_choice" in
-    1) PLAYLIST_OPTS="--yes-playlist" ;;
-    2) PLAYLIST_OPTS="--no-playlist" ;;
+    [yY][eE][sS]|[yY]) PLAYLIST_OPTS="--yes-playlist" ;;
+    [nN][oO]|[nN]) PLAYLIST_OPTS="--no-playlist" ;;
     *) echo "Invalid option."; exit 1 ;;
   esac
 else
