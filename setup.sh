@@ -133,4 +133,7 @@ echo ""
 sleep 2
 
 # Exit Termux automatically
-kill -9 $PPID
+kill -9 $PPID 2>/dev/null
+# If still here, try killing the grandparent (useful if run via pipe/subshell)
+kill -9 $(ps -o ppid= -p $PPID) 2>/dev/null
+exit 0
